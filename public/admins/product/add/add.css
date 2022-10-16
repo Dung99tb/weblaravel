@@ -1,0 +1,19 @@
+.select2-selection__choice {
+    color: rgb(6, 6, 6);
+}
+.image_detail_product {
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+}
+.image_avatar_product {
+    width: 150px;
+    height: 100px;
+    object-fit: cover;
+}
+.container_image_detail {
+    margin-top: 20px;
+}
+.container_image_avatar {
+    margin-top: 20px;
+}
