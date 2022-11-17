@@ -11,8 +11,6 @@
                         <h2>{{number_format($sale->price_new).' VNĐ'}}</h2>
                         <h4>{{number_format($sale->price_old).' VNĐ'}}</h4>
                         <p>{{$sale->name}}</p>
-                        <a href="#" class="btn btn-default add-to-cart"><i
-                                class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
                     </div>
                 </div>
                 <div class="choose">

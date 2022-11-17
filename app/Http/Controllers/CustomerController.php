@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\GuestUser;
 use App\Models\Menu;
-use App\Models\Mesages;
-use App\Models\Messages;
 use App\Models\Orders;
 use App\Models\Product;
 use App\Models\Sale;
@@ -52,7 +50,7 @@ class CustomerController extends Controller
 
     public function saleDetails($id)
     {
-        $sale = Sale::where('id', $id)->first();
+        $sale = Sale::findOrFail($id);
         $product = Product::where('id', $sale->product_id)->first();
         $categorys = Category::where('parent_id', 0)->get();
         $category = Category::where('id', $sale->category_id)->first();
@@ -116,53 +114,5 @@ class CustomerController extends Controller
             Session::put('message', 'Mật khẩu không đúng.Vui lòng thử lại!');
             return redirect()->route('password');
         }
-    }
-    public function cart()
-    {
-        $menuLimit = Menu::where('parent_id', 0)->take(3)->get();
-        return view('customer.order.cart', compact('menuLimit'));
-    }
-
-    public function wishlist($name, $id)
-    {
-        if ($name == 'sale') {
-            $sale = Sale::where('id', $id)->first();
-            Wishlist::create([
-                'price' => $sale->price_new,
-                'user_id' => auth()->id(),
-                'product_id' => $sale->product_id,
-                'amount' => '1',
-                'sale_id' => $sale->id
-            ]);
-        } else {
-            $product = Product::where('id', $id)->first();
-            Wishlist::create([
-                'price' => $product->price,
-                'user_id' => auth()->id(),
-                'product_id' => $product->id,
-                'amount' => '1',
-                'sale_id' => '0'
-            ]);
-        }
-        return redirect()->route('customer.wishlist');
-    }
-
-    public function postWishlist()
-    {
-        $sales = [];
-        $products = [];
-        $wishlists = Wishlist::where('user_id', Auth::user()->id)->get();
-        foreach ($wishlists as $wishlist) {
-            if(!empty($wishlist->sale_id)){
-                $sale = Sale::findOrFail($wishlist->sale_id);
-                array_push($sales, $sale);
-            }else {
-                $product = Product::findOrFail($wishlist->product_id);
-                array_push($products, $product);
-            }
-        }
-        $menuLimit = Menu::where('parent_id', 0)->take(3)->get();
-        // dd($sales,$products);
-        return view('customer.order.wishlist', compact('menuLimit', 'sales', 'products', 'wishlists'));
     }
 }

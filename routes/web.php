@@ -37,11 +37,20 @@ Route::group(['middleware' => ['auth:guest_user']], function () {
         'as' => 'category.product',
         'uses' => 'CustomerController@category'
     ]);
-    Route::get('/wishlist/{name}/{id}', 'CustomerController@wishlist')->name('wishlist');
-    Route::get('/wishlist', 'CustomerController@postWishlist')->name('customer.wishlist');
-    Route::get('/cart', 'CustomerController@cart')->name('cart');
+    // Route::get('/cart', 'OrderController@cart')->name('cart');
     Route::get('/sale/{id}', 'CustomerController@saleDetails')->name('sale.details');
     Route::get('/product/{id}', 'CustomerController@productDetails')->name('product.details');
+    Route::prefix('wishlist')->group(function () {
+        Route::get('/', 'WishlistController@postWishlist')->name('customer.wishlist');
+        Route::get('/{id}','WishlistController@destroyWishlist')->name('customer.wishlist.delete');
+        Route::get('/{name}/{id}', 'WishlistController@wishlist')->name('wishlist');
+    });
+    Route::prefix('cart')->group(function () {
+        Route::get('/', 'OrderController@cart')->name('cart');
+        // Route::get('/{id}','WishlistController@destroyWishlist')->name('customer.wishlist.delete');
+        Route::post('/{name}/{id}', 'OrderController@createCart')->name('customer.cart');
+        Route::put('/confirm-order', 'OrderController@confirmCart')->name('customer.confirm.cart');
+    });
 });
 
 Route::get('/chart', [

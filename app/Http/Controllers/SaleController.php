@@ -94,10 +94,9 @@ class SaleController extends Controller
         $product = Product::findOrFail($id);
         $productImages = ProductImage::where('product_id', $id)->get();
         $dataSaleCreate = $this->getDataSale($request, $product);
+        // dd($request, $productImages);
         $sale = Sale::create($dataSaleCreate);
-        if ($request->hasFile('image_path')) {
             $this->getImage($request, $sale, $productImages);
-        }
         if (!empty($request->tags)) {
             $tagIds = $this->getTag($request, $product);
             $sale->tags()->attach($tagIds);

@@ -158,61 +158,28 @@
                                     <table class="table m-0">
                                         <thead>
                                             <tr>
-                                                <th>ID</th>
-                                                <th>Sản phẩm</th>
+                                                <th>Mã đơn</th>
                                                 <th>Trạng thái</th>
                                                 <th>Thời gian</th>
+                                                <th></th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
                                                 <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                                                <td>Call of Duty IV</td>
                                                 <td><span class="badge badge-success">Hoàn thành</span></td>
                                                 <td>
                                                     <div class="sparkbar" data-color="#00a65a" data-height="20">
                                                         90,80,90,-70,61,-83,63</div>
                                                 </td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="pages/examples/invoice.html">OR1848</a></td>
-                                                <td>Samsung Smart TV</td>
-                                                <td><span class="badge badge-warning">Đang chờ xử lý</span></td>
-                                                <td>
-                                                    <div class="sparkbar" data-color="#f39c12" data-height="20">
-                                                        90,80,-90,70,61,-83,68</div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                                                <td>iPhone 6 Plus</td>
-                                                <td><span class="badge badge-danger">Đã hủy</span></td>
-                                                <td>
-                                                    <div class="sparkbar" data-color="#f56954" data-height="20">
-                                                        90,-80,90,70,-61,83,63</div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                                                <td>Samsung Smart TV</td>
-                                                <td><span class="badge badge-info">Đang xử lý</span></td>
-                                                <td>
-                                                    <div class="sparkbar" data-color="#00c0ef" data-height="20">
-                                                        90,80,-90,70,-61,83,63</div>
-                                                </td>
+                                                <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">Chi tiết</button></td>
                                             </tr>
                                         </tbody>
                                     </table>
                                 </div>
                                 <!-- /.table-responsive -->
                             </div>
-                            <!-- /.card-body -->
-                            <div class="card-footer clearfix">
-                                <a href="javascript:void(0)" class="btn btn-sm btn-info float-left">Place New Order</a>
-                                <a href="javascript:void(0)" class="btn btn-sm btn-secondary float-right">View All
-                                    Orders</a>
-                            </div>
-                            <!-- /.card-footer -->
+                            @include('customer.modal.modal_order')
                         </div>
                     </section>
                     <section class="col-lg-5 connectedSortable">
@@ -351,10 +318,10 @@
                 @section('js')
                     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
                     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.3/axios.min.js"></script>
+                    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.3/axios.min.js"></script>
                     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.41/vue.cjs.js"></script>
                     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.3/socket.io.js"></script>
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/laravel-echo/1.14.1/echo.js"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/laravel-echo/1.14.1/echo.js"></script> --}}
                     <script src="{{ asset('chat/chat.js') }}"></script>
                     <script src="{{ asset('admins/dashboard/dashboard.js') }}"></script>
                     <script src="https://code.highcharts.com/highcharts.js"></script>

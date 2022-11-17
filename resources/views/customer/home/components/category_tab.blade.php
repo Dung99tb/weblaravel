@@ -13,7 +13,7 @@
                 id="category_tab_{{ $categoryChildrent->id }}">
                 @foreach ($categoryChildrent->categoryChildrent as $categoryProduct)
                     @foreach ($categoryProduct->categoryProducts as $productItemTabs)
-                        <div class="col-sm-3">
+                        <div class="col-sm-4">
                             <div class="product-image-wrapper">
                                 <div class="single-products">
                                     <div class="productinfo text-center">
@@ -22,8 +22,7 @@
                                         </a>
                                         <h2>{{ number_format($productItemTabs->price) . ' VNĐ' }}</h2>
                                         <p>{{ $productItemTabs->name }}</p>
-                                        <a href="#" class="btn btn-default add-to-cart"><i
-                                                class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
+                                            <a href="{{route('wishlist', ['name' => 'product','id'=> $productItemTabs->id])}}" style="color: grey"><i class="fa fa-heart"></i></i> Thêm vào danh sách yêu thích</a>
                                     </div>
                                 </div>
                             </div>

@@ -11,7 +11,7 @@
     <link href="{{asset('eshopper/css/prettyPhoto.css')}}" rel="stylesheet">
     <link href="{{asset('eshopper/css/price-range.css')}}" rel="stylesheet">
     <link href="{{asset('eshopper/css/animate.css')}}" rel="stylesheet">
-    <link href="{{asset('eshopper/css/main.css')}}" rel="stylesheet">
+    <link href="{{asset('css/main.css')}}" rel="stylesheet">
     @yield('css')
 </head>
 

@@ -15,85 +15,70 @@
             <div class="row">
                 @include('customer.partials.sidebar')
                 <div class="col-sm-9 padding-right">
-                    <div class="product-details">
-                        <!--product-details-->
-                        <div class="col-sm-5">
-                            <div class="view-product">
-                                <img src="{{ $sale->feature_image_path }}" alt="" />
-                            </div>
-                            <div id="similar-product" class="carousel slide" data-ride="carousel">
-
-                                <!-- Wrapper for slides -->
-                                <div class="carousel-inner">
-                                    <div class="item active">
-                                        @foreach ($sale->imageSales as $saleImage)
-                                            <div class="col-md-3">
-                                                <img class="image_detail_sale" src="{{$saleImage->image_path_sale}}" alt="">
-                                            </div>
-                                        @endforeach
-                                    </div>
-                                    
-                                    {{-- @foreach ($productsRecommend as $keyRecommend => $recommendItem)
-                                        @if ($keyRecommend % 3 == 0)
-                                            <div class="item {{ $keyRecommend == 0 ? 'active' : '' }}">
-                                        @endif
-                                        <div class="col-sm-4">
-                                            <div class="product-image-wrapper">
-                                                <div class="single-products">
-                                                    <div class="productinfo text-center">
-                                                        <img class="img_recommend"
-                                                            src="{{ $recommendItem->feature_image_path }}" alt="" />
-                                                        <h2>{{ number_format($recommendItem->price) . ' VNĐ' }}</h2>
-                                                        <p>{{ $recommendItem->name }}</p>
-                                                        <a href="#" class="btn btn-default add-to-cart"><i
-                                                                class="fa fa-shopping-cart"></i>Add to cart</a>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        @if ($keyRecommend % 3 == 2)
+                    <form action="{{ route('customer.cart', ['name' => 'sale', 'id' => $sale->id]) }}" method="POST">
+                        @csrf
+                        <div class="product-details">
+                            <!--product-details-->
+                            <div class="col-sm-4">
+                                <div class="view-product">
+                                    <img src="{{ $sale->feature_image_path }}" alt="" />
                                 </div>
-                                @endif
-                                @endforeach --}}
+                                <div id="similar-product" class="carousel slide" data-ride="carousel">
+                                    <!-- Wrapper for slides -->
+                                    <div class="carousel-inner">
+                                        <div class="carousel-inner">
+                                            @foreach ($sale->imageSales as $key => $saleImage)
+                                                @if ($key % 3 == 0)
+                                                    <div class="item {{ $key == 0 ? 'active' : '' }}">
+                                                @endif
+                                                <div class="col-sm-4">
+                                                    <div class="product-image-wrapper">
+                                                        <div class="single-products">
+                                                            <div class="productinfo text-center" style="width: 100%; height:100px">
+                                                                <img class="img_recommend"
+                                                                    src="{{ $saleImage->image_path }}" alt="" />
+                                                            </div>
 
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Controls -->
+                                <a class="left item-control" href="#similar-product" data-slide="prev">
+                                    <i class="fa fa-angle-left"></i>
+                                </a>
+                                <a class="right item-control" href="#similar-product" data-slide="next">
+                                    <i class="fa fa-angle-right"></i>
+                                </a>
                             </div>
 
-                            <!-- Controls -->
-                            <a class="left item-control" href="#similar-product" data-slide="prev">
-                                <i class="fa fa-angle-left"></i>
-                            </a>
-                            <a class="right item-control" href="#similar-product" data-slide="next">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
                         </div>
-
-                    </div>
-                    <div class="col-sm-7">
-                        <div class="product-information">
+                        <div class="col-sm-7">
+                            <div class="product-information">
+                                <!--/product-information-->
+                                <h2>{{ $sale->name }}</h2>
+                                <p>{{ $sale->content }}</p>
+                                <img src="images/product-details/rating.png" alt="" />
+                                <span>
+                                    <span>{{ number_format($sale->price_new) . ' VNĐ' }}</span>
+                                    <br>
+                                    <label>Số lượng:</label>
+                                    <input type="text" value="1" name="amount_customer" />
+                                    <button type="submit" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ
+                                            hàng</button>
+                                </span>
+                                <p><b>Còn:</b>{{ $product->amount }}</p>
+                                <p><b>Tình trạng:</b> New</p>
+                                <p><b>Danh mục: </b>{{ $category->name }}</p>
+                            </div>
                             <!--/product-information-->
-                            <h2>{{$sale->name}}</h2>
-                            <p>{{$sale->content}}</p>
-                            <span>
-                                <span>{{number_format($sale->price_new).' VNĐ'}}</span>
-                                <br>
-                                <label>Số lượng:</label>
-                                <input type="text" value="1" name="amount_customer" />
-                                <button type="button" class="btn btn-fefault cart">
-                                    <i class="fa fa-shopping-cart"></i>
-                                    Add to cart
-                                </button>
-                            </span>
-                            <p><b>Còn:</b>{{$product->amount}}</p>
-                            <p><b>Tình trạng:</b> New</p>
-                            <p><b>Danh mục: </b>{{$category->name}}</p>
                         </div>
-                        <!--/product-information-->
-                    </div>
+                    </form>
                 </div>
                 <!--/product-details-->
-
                 <div class="category-tab shop-details-tab">
                     <!--category-tab-->
                     <div class="col-sm-12">
@@ -103,7 +88,6 @@
                         </ul>
                     </div>
                     <div class="tab-content">
-                      
                         <div class="tab-pane fade" id="tag">
                             <div class="col-sm-3">
                                 <div class="product-image-wrapper">
@@ -113,7 +97,7 @@
                                             <h2>$56</h2>
                                             <p>Easy Polo Black Edition</p>
                                             <button type="button" class="btn btn-default add-to-cart"><i
-                                                    class="fa fa-shopping-cart"></i>Add to cart</button>
+                                                    class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</button>
                                         </div>
                                     </div>
                                 </div>
@@ -136,7 +120,8 @@
 
                                 <form action="#">
                                     <textarea name=""></textarea>
-                                    <b>Rating: </b> <img src="images/product-details/rating.png" alt="" />
+                                    <b>Rating: </b> <img src="{{ asset('eshopper/images/product-details/rating.png') }}"
+                                        alt="" />
                                     <button type="button" class="btn btn-default pull-right">
                                         Submit
                                     </button>

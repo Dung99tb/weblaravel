@@ -5,3 +5,36 @@
     font-family: 'Roboto', sans-serif;
     font-weight: normal;
 }
+
+.sale_image {
+    width: 150px;
+    height: 100px;
+    object-fit: cover;
+}
+
+input[type="checkbox"] {
+    transform: scale(2);
+    padding-left: 10px;
+    margin-left: 10px;
+}
+
+.btn_shopping_cart {
+    display: flex;
+    justify-content: center;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.button_cart {
+    display: flex;
+    justify-content: center;
+}
+
+.total_cart {
+    background-color: greenyellow;
+    height: 100%;
+}

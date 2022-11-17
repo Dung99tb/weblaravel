@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProductOrdersTable extends Migration
+class AddNameToOrdersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateProductOrdersTable extends Migration
      */
     public function up()
     {
-        Schema::create('product_orders', function (Blueprint $table) {
-            $table->id();
-            $table->integer('product_id');
-            $table->timestamps();
+        Schema::table('orders', function (Blueprint $table) {
+            $table->string('name');
+            $table->string('shipping_fee');
         });
     }
 
@@ -27,6 +26,8 @@ class CreateProductOrdersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product_orders');
+        Schema::table('orders', function (Blueprint $table) {
+            //
+        });
     }
 }

@@ -1883,16 +1883,6 @@ h2.title {
   font-weight: 300
 }
 
-
-.shopper-info .btn-primary {
-  background: #FE980F;
-  border: 0 none;
-  border-radius: 0;
-  margin-right: 15px;
-  margin-top: 20px;
-}
-
-
 .form-two, .form-one {
   float: left;
   width: 47%
@@ -2079,14 +2069,6 @@ h2.title {
 
 .blog-post-area  
 .single-blog-post 
-.btn-primary {
-  background:#FE980F;
-  border: medium none;
-  border-radius: 0;
-  color: #FFFFFF;
-  margin-top: 17px;
-}
-
 
 .pagination-area {
   margin-bottom:45px;
@@ -2238,9 +2220,6 @@ h2.title {
   float: left;
 }
 
-.blog-socials .btn.btn-primary{
-  margin-top: 0;
-}
 
 .blog-socials ul li {
   
@@ -2267,16 +2246,6 @@ h2.title {
 
 
 .media-list .btn-primary, 
-.commnets .btn-primary {
-  background:#FC9A11;
-  border: 0 none;
-  border-radius: 0;
-  color: #FFFFFF;
-  float: left;
-  font-size: 10px;
-  padding: 1px 7px;
-  text-transform: uppercase;
-}
 
 .response-area h2 {
   color: #363432;
@@ -2391,13 +2360,6 @@ h2.title {
   border: 1px solid#F7F7F0
 }
 
-.btn.btn-primary {
-  background:#FE980F;
-  border: 0 none;
-  border-radius: 0;
-  margin-top: 16px;
-}
-
 .blank-arrow {
   position: relative;
 }
@@ -2456,12 +2418,6 @@ h2.title {
   height:160px;
   resize:none;
 }
-
-#main-contact-form .btn-primary {
-  margin-bottom: 15px;
-  margin-top: 20px;
-}
-
 
 #contact-page .form-control:focus, 
 #contact-page .form-control:hover {
